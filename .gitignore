@@ -1,0 +1,8 @@
+# Ignore environment variables / secrets
+.venv
+
+# Ignore all log files
+/logs
+
+# Ignore __pycache__
+opsctl/__pycache__
