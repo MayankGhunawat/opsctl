@@ -4,6 +4,7 @@ import sys
 def main():
     if len(sys.argv) < 2:
         print("Usage: python -m opsctl <command>")
+        print("Commands: system, disk, process, health, logs, deploy")
         sys.exit(1)
 
     command = sys.argv[1]
@@ -19,6 +20,16 @@ def main():
     elif command == "process":
         from . import process
         process.print_process_info()
+
+    elif command == "health":
+        from . import health
+        
+        # Optional: accept a custom host/target if provided as 3rd arg
+        # e.g., python -m opsctl health google.com
+        target = sys.argv[2] if len(sys.argv) > 2 else None
+        health.run_health_checks(target)
+    
+        
 
     elif command == "deploy":
         print("Deploying...")
